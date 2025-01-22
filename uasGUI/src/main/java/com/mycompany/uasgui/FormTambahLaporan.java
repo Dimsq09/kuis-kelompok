@@ -6,7 +6,7 @@ package com.mycompany.uasgui;
 
 /**
  *
- * @author root
+ * @author endig
  */
 import javax.swing.*; // Untuk komponen Swing seperti JButton, JTextField, dll.
 import java.io.BufferedWriter; // Untuk menulis ke file

@@ -5,6 +5,7 @@
 package com.mycompany.uasgui;
 
 import java.awt.Color;
+import java.util.List;
 import javax.swing.table.DefaultTableModel;
 
 /**
@@ -15,6 +16,8 @@ import javax.swing.table.DefaultTableModel;
 public class fromsewapancing extends javax.swing.JFrame {
 
     private String currentUsername;
+    private DataSewaPancing dataSewaPancing = new DataSewaPancing();
+
 
     /**
      * Creates new form fromsewapancing
@@ -34,8 +37,27 @@ public class fromsewapancing extends javax.swing.JFrame {
         
         Object kolom[] = {"PancingKatrol","PancingTajur","PancingTegek","umpan"};
         DefaultTableModel model = new DefaultTableModel(kolom, 0);
-        jTable1.setModel(model);
+        jTable2.setModel(model);
+        
+        refreshTable();
     }
+    
+    private void refreshTable() {
+    // Ambil data dari file menggunakan DataSewaPancing
+    List<String[]> dataList = dataSewaPancing.ambilData();
+
+    // Ambil model JTable
+    DefaultTableModel model = (DefaultTableModel) jTable2.getModel();
+
+    // Bersihkan semua baris di JTable
+    model.setRowCount(0);
+
+    // Tambahkan data ke JTable
+    for (String[] row : dataList) {
+        model.addRow(row);
+    }
+}
+
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -265,24 +287,28 @@ public class fromsewapancing extends javax.swing.JFrame {
                 "Konfirmasi Kirim", javax.swing.JOptionPane.YES_NO_OPTION);
 
         if (confirm == javax.swing.JOptionPane.YES_OPTION) {
-            javax.swing.table.DefaultTableModel model = (javax.swing.table.DefaultTableModel) jTable2.getModel();
-            model.addRow(new Object[]{pancingKatrol, pancingTajur, pancingTegek, umpan.trim()});
-
-            javax.swing.JOptionPane.showMessageDialog(this, "Data berhasil dikirim!", "Sukses", javax.swing.JOptionPane.INFORMATION_MESSAGE);
+             if (confirm == javax.swing.JOptionPane.YES_OPTION) {
+        dataSewaPancing.simpanData(pancingKatrol, pancingTajur, pancingTegek, umpan.trim());
+        javax.swing.JOptionPane.showMessageDialog(this, "Data berhasil dikirim!", "Sukses", javax.swing.JOptionPane.INFORMATION_MESSAGE);
+        refreshTable();
+    }
         }       
     }//GEN-LAST:event_btnkirimActionPerformed
 
     private void btnhapusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnhapusActionPerformed
         // TODO add your handling code here:
-           int confirm = javax.swing.JOptionPane.showConfirmDialog(this, "Apakah Anda yakin ingin menghapus semua data?", 
-                "Konfirmasi Hapus", javax.swing.JOptionPane.YES_NO_OPTION);
+           int confirm = javax.swing.JOptionPane.showConfirmDialog(this, 
+            "Apakah Anda yakin ingin menghapus semua data?", 
+            "Konfirmasi Hapus", javax.swing.JOptionPane.YES_NO_OPTION);
 
-        if (confirm == javax.swing.JOptionPane.YES_OPTION) {
-            javax.swing.table.DefaultTableModel model = (javax.swing.table.DefaultTableModel) jTable2.getModel();
-            model.setRowCount(0);
-
-            javax.swing.JOptionPane.showMessageDialog(this, "Data berhasil dihapus!", "Sukses", javax.swing.JOptionPane.INFORMATION_MESSAGE);
+    if (confirm == javax.swing.JOptionPane.YES_OPTION) {
+        if (dataSewaPancing.hapusSemuaData()) {
+            javax.swing.JOptionPane.showMessageDialog(this, "Semua data berhasil dihapus!", "Sukses", javax.swing.JOptionPane.INFORMATION_MESSAGE);
+            refreshTable();
+        } else {
+            javax.swing.JOptionPane.showMessageDialog(this, "Gagal menghapus data.", "Error", javax.swing.JOptionPane.ERROR_MESSAGE);
         }
+    }
     }//GEN-LAST:event_btnhapusActionPerformed
 
     /**
@@ -341,4 +367,6 @@ public class fromsewapancing extends javax.swing.JFrame {
     private javax.swing.JTable jTable1;
     private javax.swing.JTable jTable2;
     // End of variables declaration//GEN-END:variables
+
+    
 }

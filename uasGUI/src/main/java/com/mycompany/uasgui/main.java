@@ -8,7 +8,7 @@ package com.mycompany.uasgui;
  *
  * @author endig
  */
-public class UasGUI {
+public class main {
 
     public static void main(String[] args) {
         FormLogin startlogin = new FormLogin();

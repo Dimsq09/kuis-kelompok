@@ -50,7 +50,7 @@
           <SubComponents>
             <MenuItem class="javax.swing.JMenuItem" name="jMenuHapusBarang">
               <Properties>
-                <Property name="text" type="java.lang.String" value="Hapus Barang"/>
+                <Property name="text" type="java.lang.String" value="Hapus Laporan"/>
               </Properties>
               <Events>
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jMenuHapusBarangActionPerformed"/>
@@ -58,7 +58,7 @@
             </MenuItem>
             <MenuItem class="javax.swing.JMenuItem" name="jMenuItemPengeluaran">
               <Properties>
-                <Property name="text" type="java.lang.String" value="Tambah Barang"/>
+                <Property name="text" type="java.lang.String" value="Tambah Laoran"/>
               </Properties>
               <Events>
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jMenuItemPengeluaranActionPerformed"/>

@@ -84,7 +84,7 @@ public class FormMenu extends javax.swing.JFrame {
 
         jMenuTambahBarang.setText("Kelola Laporan");
 
-        jMenuHapusBarang.setText("Hapus Barang");
+        jMenuHapusBarang.setText("Hapus Laporan");
         jMenuHapusBarang.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jMenuHapusBarangActionPerformed(evt);
@@ -92,7 +92,7 @@ public class FormMenu extends javax.swing.JFrame {
         });
         jMenuTambahBarang.add(jMenuHapusBarang);
 
-        jMenuItemPengeluaran.setText("Tambah Barang");
+        jMenuItemPengeluaran.setText("Tambah Laoran");
         jMenuItemPengeluaran.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jMenuItemPengeluaranActionPerformed(evt);
